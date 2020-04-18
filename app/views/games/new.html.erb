@@ -1,0 +1,19 @@
+<h2>New Game</h2>
+
+<div class="card-deck">
+  <% @letters.each do |letter| %>
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+      <div class="card-body">
+       <p class="text-center font-weight-bold"><%= letter.capitalize %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<label>What is the Longest word you cand find?</label>
+<form class="form-inline" action="/score" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Type some word..." name="word">
+  <button type="submit" class="btn btn-primary mb-2">Play</button>
+  <input id="tags_list" name="letters_joined" value="<%= @letters.join %>" type="hidden"/>
+</form>
